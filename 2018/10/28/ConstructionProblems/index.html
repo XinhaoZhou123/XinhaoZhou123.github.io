@@ -26,7 +26,7 @@
     <div class="bar" style="width: 0;"></div>
     <a class="icon-home image-icon" href="javascript:;"></a>
     <div title="播放/暂停" class="icon-play"></div>
-    <h3 class="subtitle">Hello</h3>
+    <h3 class="subtitle">Config Blog With Hexo Theme Diaspora</h3>
     <div class="social">
         <!--<div class="like-icon">-->
             <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -43,14 +43,75 @@
     <div class="section">
         <div class="article">
     <div class="main">
-        <h1 class="title">Hello</h1>
+        <h1 class="title">Config Blog With Hexo Theme Diaspora</h1>
         <div class="stuff">
-            <span>十月 26, 2018</span>
+            <span>十月 28, 2018</span>
             
+  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/hexo/">hexo</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/tips/">tips</a></li></ul>
+
 
         </div>
         <div class="content markdown">
-            <p>This is my first blog. I would like to record my learning phases and share them with all of you. Thanks :)</p>
+            <p>After I have finished constructing my blog with hexo, the default theme is landscape so that I decided to change the theme to a more beautiful one. :) </p>
+<p>I have met many problems changing the theme to diaspora so that I would like to summary it and let others have a better time changing your own theme.</p>
+<h2 id="Choose-Theme"><a href="#Choose-Theme" class="headerlink" title="Choose Theme"></a>Choose Theme</h2><p>Choose one of the theme you like <a href="https://hexo.io/themes/" target="_blank" rel="noopener">here</a>.</p>
+<p>Find the github address in the website. For, diaspora, it is <a href="https://github.com/Fechin/hexo-theme-diaspora" target="_blank" rel="noopener">Here @Fechin</a>!</p>
+<p>Follow the readme.md to do the instructions.</p>
+<h2 id="Instructions"><a href="#Instructions" class="headerlink" title="Instructions"></a>Instructions</h2><ol>
+<li><p>Clone the theme.</p>
+<p>  <code>git clone https://github.com/Fechin/hexo-theme-diaspora.git diaspora</code> </p>
+</li>
+</ol>
+<hr>
+<p>   tip:<br>   Open Git Bash under hexo –&gt; enter command “<em>cd themes</em>“ then clone the theme.</p>
+<hr>
+<ol start="2">
+<li><p>Modify _config.yml of hexo.</p>
+<p> <code>theme: diaspora</code></p>
+</li>
+</ol>
+<hr>
+<p>   tip:<br>   Pay attention to the blank after the colon. </p>
+<hr>
+<ol start="3">
+<li><p>Change the theme</p>
+<p> <code>git pull</code></p>
+</li>
+<li><p>Create a new blog.</p>
+<p> <code>hexo new post &quot;yourpostname&quot;</code></p>
+</li>
+<li><p>Write a new blog.</p>
+<p> <img src="https://i.imgur.com/IOjaTIJ.png" alt=""></p>
+</li>
+</ol>
+<hr>
+<p>   tip:<br>   We modify the cover of each article here and put the source file under img folder of diaspora.<br>   <img src="https://i.imgur.com/2DMKiiw.png" alt=""></p>
+<p>   Exception1 : Cannot read property ‘indexOf’ of null.<br>   Solution1 : The link of the title cannot be null even if you don’t have it.<br>    <img src="https://i.imgur.com/Ufh5cUT.png" alt=""></p>
+<p>   Exception2 : end of the stream or a document separator is expected at line x, column y.<br>   Solution2 : Pay attention to the blank. There might be missing blanks.</p>
+<hr>
+<ol start="6">
+<li><p>Config gitalk.</p>
+<p>Register a new application <a href="https://github.com/settings/applications/new" target="_blank" rel="noopener">here</a>.</p>
+</li>
+</ol>
+<hr>
+<p>   Tip:<br>   The Homepage URL is the address of your blog.</p>
+<p>   Pay attention that the Authorization callback URL should be the address of your blog.<br>    <img src="https://i.imgur.com/8V35DJa.png" alt=""></p>
+<hr>
+<p>   Copy the Client ID and Client Secret and modify the _config.yml. </p>
+<pre><code>clientID: &apos;yourclientID&apos;
+clientSecret: &apos;yourclientSecret&apos;
+repo: &apos;XinhaoZhou123.github.io&apos;
+owner: &apos;XinhaoZhou123&apos;
+admin: [&apos;XinhaoZhou123&apos;]
+</code></pre><ol start="7">
+<li><p>Generate and deploy your blog!</p>
+<p> <code>hexo g</code> AND <code>hexo d</code></p>
+</li>
+</ol>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>Thanks the creator of theme Diaspora @<a href="https://github.com/Fechin/hexo-theme-diaspora" target="_blank" rel="noopener">Fechin</a>.</p>
+<p><a href="https://blog.csdn.net/yongf2014/article/details/50016783" target="_blank" rel="noopener">https://blog.csdn.net/yongf2014/article/details/50016783</a></p>
+<p><a href="https://github.com/gitalk/gitalk/issues/115" target="_blank" rel="noopener">https://github.com/gitalk/gitalk/issues/115</a></p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
