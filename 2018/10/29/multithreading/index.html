@@ -1,0 +1,256 @@
+
+<!DOCTYPE html>
+<html lang="" class="loading">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Xinhao Zhou</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="Record the life and Share with you!,There are two major ways to achieve multithreading. You can get more information about the advantag,"> 
+    <meta name="author" content="Xinhao Zhou"> 
+    <link rel="alternative" href="atom.xml" title="Xinhao Zhou" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <link rel="stylesheet" href="/css/diaspora.css">
+</head>
+</html>
+<body class="loading">
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;"></a>
+    <div title="播放/暂停" class="icon-play"></div>
+    <h3 class="subtitle">multithreading</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+    <div class="section">
+        <div class="article">
+    <div class="main">
+        <h1 class="title">multithreading</h1>
+        <div class="stuff">
+            <span>十月 29, 2018</span>
+            
+  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/java/">java</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/multithreading/">multithreading</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <p>There are two major ways to achieve multithreading. You can get more information about the advantages of multithreading <a href="https://en.wikipedia.org/wiki/Thread_(computing" target="_blank" rel="noopener">here</a>#Multithreading). The first way is to extend class Thread, while the second way is to implement interface Runnable. We will explain the two ways in detail and discuss the differences of them in the following section.</p>
+<h2 id="Achieve-Multithreading"><a href="#Achieve-Multithreading" class="headerlink" title="Achieve Multithreading"></a>Achieve Multithreading</h2><pre><code> class Thread1 extends Thread{  
+    private String name;  
+    public Thread1(String name) {  
+       this.name=name;  
+    }  
+    public void run() {  
+        //implementation
+        for(int i=0;i&lt;5;i++){
+            System.out.println(&quot;thread &quot;+name+&quot; is running!&quot;);
+            try {  
+                sleep((int) Math.random() * 10);  
+            } catch (InterruptedException e) {  
+                e.printStackTrace();  
+            }  
+        }
+    }  
+}  
+
+class Thread2 implements Runnable {
+     private String name;  
+
+        public Thread2(String name) {  
+            this.name=name;  
+        }  
+
+        @Override  
+        public void run() {  
+              for (int i = 0; i &lt; 5; i++) {  
+                    System.out.println(&quot;thread &quot;+name+&quot; is running!&quot;);  
+                    try {  
+                        Thread.sleep((int) Math.random() * 10);  
+                    } catch (InterruptedException e) {  
+                        e.printStackTrace();  
+                    }  
+                }  
+
+        }  
+}
+
+ public class TestThread {
+    public static void main(String[] args) {
+        Thread1 thread1 = new Thread1(&quot;A&quot;);
+        Thread2 thread2 = new Thread2(&quot;B&quot;);
+        thread1.start();
+        new Thread(thread2,&quot;B&quot;).start();
+    }
+}
+</code></pre><p>  The result is shown in the picture.<br>    <img src="https://i.imgur.com/p6Bj3r9.png" alt=""></p>
+<p>  There are two ways to achieve multithreading. The first way is to extend java.lang.Thread. In main function, we initiate a new instance and call function start() to implement function run(). The other way is to implement interface Runnable and override function run() to do the implementation. In main function an anonymous class Thread is initialized to call function start().</p>
+<p>  As the result shown, the results are random. It is because that the function sleep() is used to prevent current thread from occupying too many CPU resources so that when current thread is implementing sleep() function, the CPU will allocate the resources to another thread to make sure the high effectiveness of CPU usage.</p>
+<h2 id="Differences-between-Thread-and-Runnable"><a href="#Differences-between-Thread-and-Runnable" class="headerlink" title="Differences between Thread and Runnable"></a>Differences between Thread and Runnable</h2><ul>
+<li>By impementing interface Runnable, a class can extend another parent class, while by extending class Thread, a class cannot extend another parent class. It is because in java, a class cannot extend several parent class.</li>
+<li>It is suitable to achieve sharing of resources by implementing interface Runnable.</li>
+<li><p>By implementing interface Runnable, the codes can share among multiple threads and separate between codes and data, which increases the robustness of the program.</p>
+<h2 id="Synchronized"><a href="#Synchronized" class="headerlink" title="Synchronized"></a>Synchronized</h2><p>When we implement multiple threads, there is a problem that when multiple threads are accessing or modifying the same “data” ,then the results may be wrong. Solution to this problem is that we will give a lock to the “data” so that we only allow one thread to modify it at the same time. In java, we use key word <strong>synchronized</strong> to lock the “data”. There are mainly five types of synchronization. </p>
+</li>
+</ul>
+<ul>
+<li><p>synchronized code block</p>
+<pre><code>public void run() {
+      synchronized(this) {
+        //implementation
+      }
+   }
+</code></pre><p>  when program executing this code block, the synchronized word will only allow one thread to access the data without interrupting other parts of codes of the same function.</p>
+</li>
+<li><p>synchronized function</p>
+<pre><code>public synchronized void method()
+{
+   // implementation
+} 
+</code></pre><p>  OR</p>
+</li>
+</ul>
+<pre><code>    public void method()
+    {
+       synchronized(this) {
+              // implementation
+       }
+    }
+
+Tip： The synchronized word&apos;s scope is the method. 
+</code></pre><ul>
+<li><p>sychronized object    </p>
+<pre><code>public void method3(SomeObject obj)
+{
+   //initiate obj
+   synchronized(obj)
+   {
+          // implementation
+   }
+}
+</code></pre><p>  when one thread is accessing the obj, other threads who trys to access this obj will be blocked.</p>
+</li>
+<li><p>synchronized static function    </p>
+<pre><code>public synchronized static void method() {
+    //implementation
+}
+</code></pre><p>  The synchronized is effective to all the objects of this class.</p>
+</li>
+<li><p>sychronzied class</p>
+<pre><code>class ClassName {
+   public void method() {
+      synchronized(ClassName.class) {
+         // implementation
+      }
+   }
+}
+</code></pre></li>
+</ul>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p><a href="https://blog.csdn.net/sinat_32588261/article/details/72880159" target="_blank" rel="noopener">https://blog.csdn.net/sinat_32588261/article/details/72880159</a></p>
+<p><a href="https://www.cnblogs.com/yjd_hycf_space/p/7526608.html" target="_blank" rel="noopener">https://www.cnblogs.com/yjd_hycf_space/p/7526608.html</a></p>
+<p><a href="https://www.cnblogs.com/wxd0108/p/5479442.html" target="_blank" rel="noopener">https://www.cnblogs.com/wxd0108/p/5479442.html</a></p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        <li title="0" data-url="http://link.hhtjim.com/163/5146554.mp3"></li>
+                    
+                        <li title="1" data-url="http://link.hhtjim.com/qq/001faIUs4M2zna.mp3"></li>
+                    
+                </ul>
+            
+        </div>
+        
+    <div id="gitalk-container" class="comment link" data-ae="false" data-ci="b4861954f077e575b288" data-cs="d8316e1cb936928f5ca9e71376722e0ca93f5410" data-r="XinhaoZhou123.github.io" data-o="XinhaoZhou123" data-a="XinhaoZhou123" data-d="false">查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</html>
