@@ -26,7 +26,7 @@
     <div class="bar" style="width: 0;"></div>
     <a class="icon-home image-icon" href="javascript:;"></a>
     <div title="播放/暂停" class="icon-play"></div>
-    <h3 class="subtitle">Config Blog With Hexo Theme Diaspora</h3>
+    <h3 class="subtitle">Differences between process and thread</h3>
     <div class="social">
         <!--<div class="like-icon">-->
             <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -43,75 +43,33 @@
     <div class="section">
         <div class="article">
     <div class="main">
-        <h1 class="title">Config Blog With Hexo Theme Diaspora</h1>
+        <h1 class="title">Differences between process and thread</h1>
         <div class="stuff">
-            <span>十月 28, 2018</span>
+            <span>十月 29, 2018</span>
             
-  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/hexo/">hexo</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/tips/">tips</a></li></ul>
+  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/java/">java</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/process/">process</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/thread/">thread</a></li></ul>
 
 
         </div>
         <div class="content markdown">
-            <p>After I have finished constructing my blog with hexo, the default theme is landscape so that I decided to change the theme to a more beautiful one. :) </p>
-<p>I have met many problems changing the theme to diaspora so that I would like to summary it and let others have a better time changing your own theme.</p>
-<h2 id="Choose-Theme"><a href="#Choose-Theme" class="headerlink" title="Choose Theme"></a>Choose Theme</h2><p>Choose one of the theme you like <a href="https://hexo.io/themes/" target="_blank" rel="noopener">here</a>.</p>
-<p>Find the github address in the website. For, diaspora, it is <a href="https://github.com/Fechin/hexo-theme-diaspora" target="_blank" rel="noopener">Here @Fechin</a>!</p>
-<p>Follow the readme.md to do the instructions.</p>
-<h2 id="Instructions"><a href="#Instructions" class="headerlink" title="Instructions"></a>Instructions</h2><ol>
-<li><p>Clone the theme.</p>
-<p>  <code>git clone https://github.com/Fechin/hexo-theme-diaspora.git diaspora</code> </p>
-</li>
-</ol>
-<hr>
-<p>   tip:<br>   Open Git Bash under hexo –&gt; enter command “<em>cd themes</em>“ then clone the theme.</p>
-<hr>
-<ol start="2">
-<li><p>Modify _config.yml of hexo.</p>
-<p> <code>theme: diaspora</code></p>
-</li>
-</ol>
-<hr>
-<p>   tip:<br>   Pay attention to the blank after the colon. </p>
-<hr>
-<ol start="3">
-<li><p>Change the theme</p>
-<p> <code>git pull</code></p>
-</li>
-<li><p>Create a new blog.</p>
-<p> <code>hexo new post &quot;yourpostname&quot;</code></p>
-</li>
-<li><p>Write a new blog.</p>
-<p> <img src="https://i.imgur.com/IOjaTIJ.png" alt=""></p>
-</li>
-</ol>
-<hr>
-<p>   tip:<br>   We modify the cover of each article here and put the source file under img folder of diaspora.<br>   <img src="https://i.imgur.com/2DMKiiw.png" alt=""></p>
-<p>   Exception1 : Cannot read property ‘indexOf’ of null.<br>   Solution1 : The link of the title cannot be null even if you don’t have it.<br>    <img src="https://i.imgur.com/Ufh5cUT.png" alt=""></p>
-<p>   Exception2 : end of the stream or a document separator is expected at line x, column y.<br>   Solution2 : Pay attention to the blank. There might be missing blanks.</p>
-<hr>
-<ol start="6">
-<li><p>Config gitalk.</p>
-<p>Register a new application <a href="https://github.com/settings/applications/new" target="_blank" rel="noopener">here</a>.</p>
-</li>
-</ol>
-<hr>
-<p>   Tip:<br>   The Homepage URL is the address of your blog.</p>
-<p>   Pay attention that the Authorization callback URL should be the address of your blog.<br>    <img src="https://i.imgur.com/8V35DJa.png" alt=""></p>
-<hr>
-<p>   Copy the Client ID and Client Secret and modify the _config.yml. </p>
-<pre><code>clientID: &apos;yourclientID&apos;
-clientSecret: &apos;yourclientSecret&apos;
-repo: &apos;XinhaoZhou123.github.io&apos;
-owner: &apos;XinhaoZhou123&apos;
-admin: [&apos;XinhaoZhou123&apos;]
-</code></pre><ol start="7">
-<li><p>Generate and deploy your blog!</p>
-<p> <code>hexo g</code> AND <code>hexo d</code></p>
-</li>
-</ol>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>Thanks the creator of theme Diaspora @<a href="https://github.com/Fechin/hexo-theme-diaspora" target="_blank" rel="noopener">Fechin</a>.</p>
-<p><a href="https://blog.csdn.net/yongf2014/article/details/50016783" target="_blank" rel="noopener">https://blog.csdn.net/yongf2014/article/details/50016783</a></p>
-<p><a href="https://github.com/gitalk/gitalk/issues/115" target="_blank" rel="noopener">https://github.com/gitalk/gitalk/issues/115</a></p>
+            <p>Process : An instance of computer progam that is being executed. It is a basic unit when allocating and competing resources for program. As we all know, a program is a collection of instruction, while process is the execution of these instructions.</p>
+<p>Tread : A thread is a smallest sequence of programmed instructions that can be managed by a scheduler. It is a basic unit when scheduling tasks for processor. </p>
+<h2 id="Differences"><a href="#Differences" class="headerlink" title="Differences"></a>Differences</h2><ul>
+<li>Processes are typically independent while threads exist as part of the process. </li>
+<li>Processes have independent address spaces, while threads of a process share the same address space of the process.</li>
+<li>Processes have independent resource allocation, while threads of a process share the same resorce allocation of the process.</li>
+<li>Processes carry more state information than threads.</li>
+<li>Switching between processes cost more than switching between threads.</li>
+<li>Switching between threads is faster than switching between processes.</li>
+<li>processes interact only through system-provided inter-process communication mechanisms</li>
+<li>Every process has an entrence of excution, while a thread cannot execute independently.</li>
+</ul>
+<h2 id="multiprocessing-and-multipthreading"><a href="#multiprocessing-and-multipthreading" class="headerlink" title="multiprocessing and multipthreading"></a>multiprocessing and multipthreading</h2><p>When should we use multiprocessing and when should we use multithreading ?</p>
+<p>Fistly, the execution cost of threads is relatively low, while threads are weak considering managing resources. Threads are really suitable executing on Symmetrical Multi-Processing (SMP) system. When it is required to execute in a high effective and frequently switching environment, multithreading is your first choice.</p>
+<p>Secondly, the execution cost of processes is relatively high, while processes are effective considering managing and protecting resources. When it is required to have a good management of resources without considering cost and effectiveness, multiprocessing is a good choice.</p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p><a href="https://en.wikipedia.org/wiki/Process_(computing)" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Process_(computing)</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Thread_(computing)" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Thread_(computing)</a></p>
+<p><a href="https://www.cnblogs.com/zhuzhu2016/p/5804875.html" target="_blank" rel="noopener">https://www.cnblogs.com/zhuzhu2016/p/5804875.html</a></p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
