@@ -26,7 +26,7 @@
     <div class="bar" style="width: 0;"></div>
     <a class="icon-home image-icon" href="javascript:;"></a>
     <div title="播放/暂停" class="icon-play"></div>
-    <h3 class="subtitle">Hello</h3>
+    <h3 class="subtitle">Switch Router And Middlebox</h3>
     <div class="social">
         <!--<div class="like-icon">-->
             <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -43,14 +43,30 @@
     <div class="section">
         <div class="article">
     <div class="main">
-        <h1 class="title">Hello</h1>
+        <h1 class="title">Switch Router And Middlebox</h1>
         <div class="stuff">
-            <span>十月 26, 2018</span>
+            <span>十月 30, 2018</span>
             
+  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/network/">network</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/router/">router</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/switch/">switch</a></li></ul>
+
 
         </div>
         <div class="content markdown">
-            <p>This is my first blog. I would like to record my learning phases and share them with all of you. Thanks :)</p>
+            <p>Routers perform traffic directing functions on the Internet and forward data packets between computer networks. Switch is a network device that use packet switching to receive process and forward data to the destination device. I will discuss several differences between switches and routers to let you get a better understanding of these concepts. Then, I will discuss the concept of middlebox and the relationship among these three devices.</p>
+<h2 id="Differences-between-Routers-and-Switches"><a href="#Differences-between-Routers-and-Switches" class="headerlink" title="Differences between Routers and Switches"></a>Differences between Routers and Switches</h2><ul>
+<li>Routers perform at the third layer of the OSI model, which is network layer. However, most switches perform at the second layer of OSI model, which is data link layer. Few switches, which can process data, perform at the third layer.</li>
+<li>Routers contain routing table which will be used to forward data packet. However, switches will only be used to transfer data traffic without decision making.</li>
+<li>Routers locate the address by IP and they can process the TCP/IP protocol. However, switches locate the address by MAC. </li>
+<li>A router can allocate one IP to many devices, while transparent to the outside. However, a switch can connect many hosts, while they all have their own IP.</li>
+<li>Switches are used to extend Local Area Network (LAN), while Routers can use to connect different LANs, which means that routers can connect different networks.</li>
+<li>Routers can provide the function of firewalls, while switches cannot.  </li>
+</ul>
+<h2 id="Middlebox"><a href="#Middlebox" class="headerlink" title="Middlebox"></a>Middlebox</h2><p>Middlebox is a computer device that transforms, inspects, filters, or otherwise manipulates traffic for purposes. There are several types of middlebox which are firewalls, intrusion detection system, network address traslator, WAN optimizers, load balancers and so on.  </p>
+<p>Middlebox is a device which transforms or filters traffic, while it will not forward traffic like a router. In other words, it will not make decisions about which is the next node of the transporting path. However, middle box will make decisions about manipulating the traffic, while switches will only transfer data.</p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p><a href="https://en.wikipedia.org/wiki/Router_(computing)" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Router_(computing)</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Network_switch" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Network_switch</a></p>
+<p><a href="http://net.zol.com.cn/640/6403251.html" target="_blank" rel="noopener">http://net.zol.com.cn/640/6403251.html</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Middlebox#Types_of_middleboxes" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Middlebox#Types_of_middleboxes</a></p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
