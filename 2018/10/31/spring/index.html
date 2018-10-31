@@ -26,7 +26,7 @@
     <div class="bar" style="width: 0;"></div>
     <a class="icon-home image-icon" href="javascript:;"></a>
     <div title="播放/暂停" class="icon-play"></div>
-    <h3 class="subtitle">Differences between process and thread</h3>
+    <h3 class="subtitle">spring</h3>
     <div class="social">
         <!--<div class="like-icon">-->
             <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -43,33 +43,25 @@
     <div class="section">
         <div class="article">
     <div class="main">
-        <h1 class="title">Differences between process and thread</h1>
+        <h1 class="title">spring</h1>
         <div class="stuff">
-            <span>十月 29, 2018</span>
+            <span>十月 31, 2018</span>
             
-  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/java/">java</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/process/">process</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/thread/">thread</a></li></ul>
+  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/framework/">framework</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/spring/">spring</a></li></ul>
 
 
         </div>
         <div class="content markdown">
-            <p>Process : An instance of computer progam that is being executed. It is a basic unit when allocating and competing resources for program. As we all know, a program is a collection of instruction, while process is the execution of these instructions.</p>
-<p>Tread : A thread is a smallest sequence of programmed instructions that can be managed by a scheduler. It is a basic unit when scheduling tasks for processor. </p>
-<h2 id="Differences"><a href="#Differences" class="headerlink" title="Differences"></a>Differences</h2><ul>
-<li>Processes are typically independent while threads exist as part of the process. </li>
-<li>Processes have independent address spaces, while threads of a process share the same address space of the process.</li>
-<li>Processes have independent resource allocation, while threads of a process share the same resorce allocation of the process.</li>
-<li>Processes carry more state information than threads.</li>
-<li>Switching between processes cost more than switching between threads.</li>
-<li>Switching between threads is faster than switching between processes.</li>
-<li>processes interact only through system-provided inter-process communication mechanisms</li>
-<li>Every process has an entrence of excution, while a thread cannot execute independently.</li>
-</ul>
-<h2 id="multiprocessing-and-multipthreading"><a href="#multiprocessing-and-multipthreading" class="headerlink" title="multiprocessing and multipthreading"></a>multiprocessing and multipthreading</h2><p>When should we use multiprocessing and when should we use multithreading ?</p>
-<p>Fistly, the execution cost of threads is relatively low, while threads are weak considering managing resources. Threads are really suitable executing on Symmetrical Multi-Processing (SMP) system. When it is required to execute in a high effective and frequently switching environment, multithreading is your first choice.</p>
-<p>Secondly, the execution cost of processes is relatively high, while processes are effective considering managing and protecting resources. When it is required to have a good management of resources without considering cost and effectiveness, multiprocessing is a good choice.</p>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p><a href="https://en.wikipedia.org/wiki/Process_(computing)" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Process_(computing)</a></p>
-<p><a href="https://en.wikipedia.org/wiki/Thread_(computing)" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Thread_(computing)</a></p>
-<p><a href="https://www.cnblogs.com/zhuzhu2016/p/5804875.html" target="_blank" rel="noopener">https://www.cnblogs.com/zhuzhu2016/p/5804875.html</a></p>
+            <p>Spring is an open source application framework and inversion of control container for java platform. There are two important features that are really important when we understand spring and program with it. They are Inversion of Control (IoC) and Aspect Oriented Programming (AOP).</p>
+<h2 id="Inversion-of-Control"><a href="#Inversion-of-Control" class="headerlink" title="Inversion of Control"></a>Inversion of Control</h2><p>Inversion of control (IoC) is a design principle, that it is the framework that calls into the custom code. We regard spring as a container which is responsible for managing object life cycles of specific objects: creating these objects, calling their initialization methods, and configuring these objects by writing them together. </p>
+<p>Spring is used to decouple the dependencies of these objects. A complex system needs the coroperation of different objects and these objects are coupled in a certain way. By encapsulating these objects and leaving the outside with an interface, the complexity of solving problems is decreased. Spring framework is used to decouple the dependencies.</p>
+<p>For example, in java web programming, there are several layers to implement the function. The bean layer initialize the basic object and properties of it. The dao layer perform data persistency by accessing and storing data into database. The service layer perform the transaction and service of the function. The control layer control the implementation of the function chain with the input of the data from customers. As we all know, these four layers are coupled together because they depend on each other to achieve functions. Spring decouples the dependencies between these two functions, injects the dependencies in a form of notation and decreases the complexity of coding.</p>
+<h2 id="Aspect-Oriented-Programming"><a href="#Aspect-Oriented-Programming" class="headerlink" title="Aspect Oriented Programming"></a>Aspect Oriented Programming</h2><p>Aspect-oriented programming (AOP) is a programming paradigm that aims to increase modularity by allowing the separation of cross-cutting concerns. These pointcut is independent in terms of functional logic. However, they are enbeded in the implementaton of these functions and changing one concerns entails the possibility of changing all the concerns. Spring is used to implement the function and perform independency of each step. </p>
+<p>For example, in spring, we use AOP configuration to control the transaction. They are used to perform the commit rollback and access the transaction information. For example,when transferring money between accounts, which means increasing the amount of money of one account and decreasing the amount of money of the other, an exception occurs in one account. The rollback of this transaction is performed immediately. In this case, spring performs as the controller of the transaction.</p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p><a href="https://en.wikipedia.org/wiki/Spring_Framework" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Spring_Framework</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Inversion_of_control" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Inversion_of_control</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Aspect-oriented_programming" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Aspect-oriented_programming</a></p>
+<p><a href="https://www.cnblogs.com/superjt/p/4311577.html" target="_blank" rel="noopener">https://www.cnblogs.com/superjt/p/4311577.html</a></p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
