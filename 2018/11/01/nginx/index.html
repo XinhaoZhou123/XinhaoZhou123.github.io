@@ -26,7 +26,7 @@
     <div class="bar" style="width: 0;"></div>
     <a class="icon-home image-icon" href="javascript:;"></a>
     <div title="播放/暂停" class="icon-play"></div>
-    <h3 class="subtitle">who am i?</h3>
+    <h3 class="subtitle">Nginx</h3>
     <div class="social">
         <!--<div class="like-icon">-->
             <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -43,36 +43,33 @@
     <div class="section">
         <div class="article">
     <div class="main">
-        <h1 class="title">who am i?</h1>
+        <h1 class="title">Nginx</h1>
         <div class="stuff">
-            <span>十月 26, 2018</span>
+            <span>十一月 01, 2018</span>
             
+  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/java-web/">java web</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/nginx/">nginx</a></li></ul>
+
 
         </div>
         <div class="content markdown">
-            <h2 id="Welcome-to-my-blog"><a href="#Welcome-to-my-blog" class="headerlink" title="Welcome to my blog!  :)"></a>Welcome to my blog!  :)</h2><p>Let me introduce myself first!</p>
-<p>My name is Xinhao Zhou, a girl studying in NEU of China. I am a senior student majoring in Software Enginnering. Good command of basic concepts of programming and several programming languages. Hoping to make changes to the world one day with my own knowledge. </p>
-<p>Eager to read and travel. Hoping to read all the books in the library of NEU. Hoping to travel around the world to enjoy beautiful sceneries and experience different cultures through the process!</p>
-<h2 id="EDUCATION"><a href="#EDUCATION" class="headerlink" title="EDUCATION"></a>EDUCATION</h2><p>09/2015-present:<br>International Class of Software Engineering<br>College of Software, Northeast University, China</p>
-<p><a href="http://english.neu.edu.cn/" title="NEU" target="_blank" rel="noopener">Get Detail Info About NEU</a></p>
-<h2 id="Interest-Fields"><a href="#Interest-Fields" class="headerlink" title="Interest Fields"></a>Interest Fields</h2><ul>
-<li><p>Software Defined Network (SDN)</p>
-</li>
-<li><p>Network Function Virtualization (NFV)</p>
-</li>
-<li><p>Service Function Chain (SFC)</p>
-</li>
-<li><p>Virtual Network Function (VNF) migration</p>
-</li>
+            <p>Nginx is a web server that was created by Igor Sysoev and first publicly released in 2004. In the following section, I will introduce the three important features of nginx and make a rough comparision between nginx and apache.</p>
+<p>There are three important features of nginx. They are reverse proxy, load balancing and devision of static and dynamic. </p>
+<h2 id="Reverse-Proxy"><a href="#Reverse-Proxy" class="headerlink" title="Reverse Proxy"></a>Reverse Proxy</h2><p>Forward Proxy is that clients set the server and the port number manually to access the web pages. Reverse Proxy is that clients access the proxy server and the proxy server forward the request to the inner server clusters and return the results back to clients.</p>
+<p>Nginx is always used by Ajax to perform the accessing information accross the scope. Nginx is used as a proxy server and forward the request from HBuilder which occupies port 80 to tomcat which occupies port 8080.</p>
+<h2 id="Load-Balancing"><a href="#Load-Balancing" class="headerlink" title="Load Balancing"></a>Load Balancing</h2><p>Nginx can be used to balance the load from many clients. Due to the fact that nginx can process more requests than tomcat per second, it is used as a redirect server. Nginx process the requests from the clients to different server in the network to perform load balancing. </p>
+<p><img src="https://i.imgur.com/JwUYXiV.png" alt=""><br>In this way, we adds two server to configure the cluster of tomcat. If clients request to access the web pages, nginx will forward the requests to these servers.</p>
+<p>If we add ip_hash to upstream, and then add these configuration, we can also balance the load.<br><img src="https://i.imgur.com/5PdcOGS.png" alt=""></p>
+<p>The difference between these two ways is that by using ip_hash, the proxy server binds the request with a fixed server. However, without ip_hash, the proxy server rollingly forward the requests to the server of the cluser.</p>
+<h2 id="Devision-of-static-and-dynamic"><a href="#Devision-of-static-and-dynamic" class="headerlink" title="Devision of static and dynamic"></a>Devision of static and dynamic</h2><p>There are many files that are static, like .jpg .css. js. We can place these files in the static server, and if cilents request these files we can forward the request to the static server to limit the responding time and memory allocation of dynamic server. For example, we can place the static files direcly on nginx and use regular expressions to filter the request and forward the request. We can also place the static files to other servers, like FastDFS. </p>
+<p><img src="https://i.imgur.com/mHRzlwI.png" alt=""><br>This picture shows how to configure nginx by using regular expressions to filter the rquests and forward the requests.</p>
+<p><img src="https://i.imgur.com/NRatZ4Z.png" alt=""><br>This picture shows how to configure nginx to forward the requests for static files to fastDFS.</p>
+<h2 id="Nginx-vs-Apache"><a href="#Nginx-vs-Apache" class="headerlink" title="Nginx vs Apache"></a>Nginx vs Apache</h2><ul>
+<li>Nginx mainly serves static files, while apache mainly serves to perform a function chain.</li>
+<li>Nginx uses dynamicly less memory than apache.</li>
+<li>Nginx can handle roughly four times more requests per second than apache.</li>
+<li>Nginx is less stable on Windows-configured systems whereas Apache has full support.</li>
 </ul>
-<h2 id="Contact-Me"><a href="#Contact-Me" class="headerlink" title="Contact Me"></a>Contact Me</h2><ul>
-<li><p>Tel: 13234045967</p>
-</li>
-<li><p>Email: <a href="mailto:zhouxinhaoxh@gmail.com" target="_blank" rel="noopener">zhouxinhaoxh@gmail.com</a></p>
-</li>
-<li><p>WeChat: 13942453912</p>
-</li>
-</ul>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p><a href="https://en.wikipedia.org/wiki/Nginx" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Nginx</a></p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
