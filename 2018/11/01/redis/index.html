@@ -26,7 +26,7 @@
     <div class="bar" style="width: 0;"></div>
     <a class="icon-home image-icon" href="javascript:;"></a>
     <div title="播放/暂停" class="icon-play"></div>
-    <h3 class="subtitle">Differences between process and thread</h3>
+    <h3 class="subtitle">Redis</h3>
     <div class="social">
         <!--<div class="like-icon">-->
             <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -43,33 +43,55 @@
     <div class="section">
         <div class="article">
     <div class="main">
-        <h1 class="title">Differences between process and thread</h1>
+        <h1 class="title">Redis</h1>
         <div class="stuff">
-            <span>十月 29, 2018</span>
+            <span>十一月 01, 2018</span>
             
-  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/java/">java</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/process/">process</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/thread/">thread</a></li></ul>
+  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/redis/">redis</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/server/">server</a></li></ul>
 
 
         </div>
         <div class="content markdown">
-            <p>Process : An instance of computer progam that is being executed. It is a basic unit when allocating and competing resources for program. As we all know, a program is a collection of instruction, while process is the execution of these instructions.</p>
-<p>Tread : A thread is a smallest sequence of programmed instructions that can be managed by a scheduler. It is a basic unit when scheduling tasks for processor. </p>
-<h2 id="Differences"><a href="#Differences" class="headerlink" title="Differences"></a>Differences</h2><ul>
-<li>Processes are typically independent while threads exist as part of the process. </li>
-<li>Processes have independent address spaces, while threads of a process share the same address space of the process.</li>
-<li>Processes have independent resource allocation, while threads of a process share the same resorce allocation of the process.</li>
-<li>Processes carry more state information than threads.</li>
-<li>Switching between processes cost more than switching between threads.</li>
-<li>Switching between threads is faster than switching between processes.</li>
-<li>processes interact only through system-provided inter-process communication mechanisms</li>
-<li>Every process has an entrence of excution, while a thread cannot execute independently.</li>
+            <p>Different from relational database like mysql or oracle, redis is a key-value database. It is a in-memory database so that the speed of accessing redis is really fast. At the same time, redis supports data persistence. When reloading it, redis can store the data to the disk. Redis supports different types of data storage, for instance, string, list, hash ,set, zset.</p>
+<h2 id="Remote-connect-redis"><a href="#Remote-connect-redis" class="headerlink" title="Remote connect redis"></a>Remote connect redis</h2><ul>
+<li><p>Modify IP binding of the configuration file.</p>
+<p>  <code>bind 0.0.0.0</code> OR <code>#bind 127.0.0.1</code></p>
+</li>
+<li><p>Modify the protected mode of the configuration file.</p>
+<p>  <code>protected-mode no</code></p>
+</li>
+<li><p>Use this command to connect the redis with IP and port number.</p>
+<p>  redis-cli -h host -p port -a password</p>
+</li>
 </ul>
-<h2 id="multiprocessing-and-multipthreading"><a href="#multiprocessing-and-multipthreading" class="headerlink" title="multiprocessing and multipthreading"></a>multiprocessing and multipthreading</h2><p>When should we use multiprocessing and when should we use multithreading ?</p>
-<p>Fistly, the execution cost of threads is relatively low, while threads are weak considering managing resources. Threads are really suitable executing on Symmetrical Multi-Processing (SMP) system. When it is required to execute in a high effective and frequently switching environment, multithreading is your first choice.</p>
-<p>Secondly, the execution cost of processes is relatively high, while processes are effective considering managing and protecting resources. When it is required to have a good management of resources without considering cost and effectiveness, multiprocessing is a good choice.</p>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p><a href="https://en.wikipedia.org/wiki/Process_(computing)" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Process_(computing)</a></p>
-<p><a href="https://en.wikipedia.org/wiki/Thread_(computing)" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Thread_(computing)</a></p>
-<p><a href="https://www.cnblogs.com/zhuzhu2016/p/5804875.html" target="_blank" rel="noopener">https://www.cnblogs.com/zhuzhu2016/p/5804875.html</a></p>
+<h2 id="Connect-redis-with-java"><a href="#Connect-redis-with-java" class="headerlink" title="Connect redis with java"></a>Connect redis with java</h2><pre><code>`public static void testping(){
+    Jedis jedis = new Jedis(&quot;10.25.39.152&quot;,6379);
+    jedis.auth(&quot;yourpassword&quot;);
+    System.out.println(jedis.ping());
+
+    jedis.close();
+}`
+</code></pre><p>  Test whether the remote connection of redis is successful using this codes. If the response is “pong”, then the connection is set up.</p>
+<p>  Get detail information about all the commands of redis <a href="https://redis.io/commands" target="_blank" rel="noopener">here</a>.</p>
+<p>  Redis also provides the transaction function. </p>
+<pre><code>`public static void testTransaction(){
+    Jedis jedis = new Jedis(&quot;10.25.19.145&quot;,6379);
+    jedis.auth(&quot;yourpassword&quot;);
+    Transaction transaction = jedis.multi();
+    //your implementation
+    transaction.set(&quot;transkey1&quot;, &quot;testtransactionexec&quot;);
+    transaction.exec();
+    jedis.close();
+}`
+</code></pre><h2 id="JedisPool"><a href="#JedisPool" class="headerlink" title="JedisPool"></a>JedisPool</h2><p>  Use these codes to return a jedis connection to connect redis from the jedis pool.<br>        <code>public static Jedis getJedis(){
+            JedisPoolConfig config = new JedisPoolConfig();
+            JedisPool jedisPool = new JedisPool(config, &quot;10.25.19.145&quot;, 6379, 60000, &quot;yourpassword&quot;);
+            Jedis resource = jedisPool.getResource();
+            return resource;
+        }</code></p>
+<p>  Using jedispool needs more complicated implementation than connecting to redis directly. However, it provides resources management which is really important in a program of high concurrency.</p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p><a href="https://en.wikipedia.org/wiki/Redis" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Redis</a></p>
+<p><a href="https://redis.io/documentation" target="_blank" rel="noopener">https://redis.io/documentation</a></p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
